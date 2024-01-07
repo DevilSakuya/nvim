@@ -44,4 +44,4 @@ opt.wrap = false
 opt.cursorline = true
 opt.scrolloff = 10
 opt.updatetime = 300
-opt.signcolumn = "yes"
+opt.signcolumn = "number"
