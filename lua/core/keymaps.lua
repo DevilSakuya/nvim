@@ -76,7 +76,6 @@ api.nvim_create_autocmd('LspAttach', {
 })
 
 ---- dap map
-local keymap = vim.keymap
 keymap.set({'n', 'v'}, '<leader>dh', function()
   require('dap.ui.widgets').hover()
 end)
