@@ -1,15 +1,22 @@
 local jdtls = require('jdtls')
 
 -- jdtls config
+-- TODO thoese config shuled use env to config
 local root_dir_marks = { '.git', 'mvnw' }
 local home = os.getenv('HOME')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+-- TOOD java home and runtimes config should use env or some more generic configs
 local jdt_workspace = home .. '/.workspace/' .. project_name
-local jdt_java_home = home .. "/dev/jdk/jdk-17"
-local jdt_home = home .. "/code/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
+local jdt_java_home = home .. '/dev/jdk/jdk-17'
+
+-- use mason to manager java lsp plugins
+local mason_install_dir = vim.fn.stdpath("data") .. '/mason'
+local jdt_home = mason_install_dir .. '/packages/jdtls'
 local jdt_version = '*'
 
-local java_debug_plugin = home .. '/code/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'
+local java_debug_plugin = mason_install_dir .. '/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'
+
 local bundles = {
   vim.fn.glob(java_debug_plugin, 1)
 }
@@ -46,6 +53,22 @@ local config = {
     java = {
       signatureHelp = {
         enabled = true
+      },
+      configuration = {
+        runtimes = {
+          {
+            name = 'JavaSE-21',
+            path = home .. '/dev/jdk/jdk-21'
+          },
+          {
+            name = 'JavaSE-20',
+            path = home .. '/dev/jdk/jdk-20'
+          },
+          {
+            name = 'JavaSE-17',
+            path = home .. '/dev/jdk/jdk-17'
+          }
+        }
       }
     }
   },

@@ -30,7 +30,8 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-tree/nvim-web-devicons',
       opt = true
-    }
+    },
+    -- use 'arkav/lualine-lsp-progress'
   }
 
   -- tree
@@ -56,8 +57,11 @@ return require('packer').startup(function(use)
   -- lsp & dap
   -- java
   use 'mfussenegger/nvim-dap'
-  -- use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
   use 'mfussenegger/nvim-jdtls'
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = {'mfussenegger/nvim-dap'}
+  }
   -- mason
   use {
     'williamboman/mason.nvim',

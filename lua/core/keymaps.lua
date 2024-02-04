@@ -27,9 +27,12 @@ keymap.set('n', '<c-j>', ':m +1<cr>')
 keymap.set('v', '<c-k>', ":m '<-2<cr>gv")
 keymap.set('v', '<c-j>', ":m '>+1<cr>gv")
 
+---- keymap
+keymap.set('t', '<Esc>', '<c-\\><c-n><cr>')
+
 ---- leader map
 keymap.set('n', '<leader><leader>', ':help<cr>')
-keymap.set('n', '<leader>ff', ':FZF<cr>')
+-- keymap.set('n', '<leader>ff', ':FZF<cr>')
 keymap.set('n', '<leader>b', ':ls<cr>:b ')
 keymap.set('n', '<leader>t', ':bel term<cr>')
 keymap.set('n', '<leader>e', ':NvimTreeOpen<cr>')
@@ -75,7 +78,7 @@ api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
----- dap map
+---- dap map test<--
 keymap.set({'n', 'v'}, '<leader>dh', function()
   require('dap.ui.widgets').hover()
 end)
@@ -90,3 +93,9 @@ keymap.set('n', '<leader>ds', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end)
+
+-- 参考
+-- keymap("n", "<F5>", "<CMD>lua require'dap'.continue()<CR>", opt)
+-- keymap("n", "<F6>", "<CMD>lua require'dap'.step_over()<CR>", opt)
+-- keymap("n", "<F7>", "<CMD>lua require'dap'.step_into()<CR>", opt)
+-- keymap("n", "<F8>", "<CMD>lua require'dap'.step_out()<CR>", opt)
